@@ -1,0 +1,21 @@
+[
+  {
+    "name": "news",
+    "api": {
+      "method": "get",
+      "urlPattern":
+        "https://newsapi.org/v2/everything?q=%CATEGORY%&apiKey=364b0c6a89c74ab5bb5081752d4e1095",
+      "header": null
+    },
+    "defaultImgUrl": null
+  },
+  {
+    "name": "videos",
+    "api": {
+      "method": "get",
+      "urlPattern": "https://api.youtube.com/test/?q=%CATEGORY%",
+      "header": null
+    },
+    "defaultImgUrl": null
+  }
+]
