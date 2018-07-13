@@ -12,7 +12,6 @@ class Countries extends Component {
     api
       .getCountries()
       .then(countries => {
-        console.log(countries);
         this.setState({
           countries: countries
         });
@@ -23,7 +22,7 @@ class Countries extends Component {
     return (
       <div className="Countries">
         <h2>List of news</h2>
-        {this.state.countries.map((c, i) => <li key={i}>{c.name}</li>)}
+        {this.state.news.map((c, i) => <li key={i}>{c.name}</li>)}
       </div>
     );
   }

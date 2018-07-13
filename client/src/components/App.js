@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route, Link, Switch } from "react-router-dom";
-import Home from "./Home";
+import News from "./News";
 import Countries from "./Countries";
 import AddCountry from "./AddCountry";
 import Secret from "./Secret";
@@ -32,7 +32,7 @@ class App extends Component {
           <Link to="/add-country">Add country</Link>
         </header>
         <Switch>
-          <Route path="/" exact component={Home} />
+          <Route path="/" exact component={News} />
           <Route path="/countries" component={Countries} />
           <Route path="/add-country" component={AddCountry} />
           <Route path="/signup" component={Signup} />
