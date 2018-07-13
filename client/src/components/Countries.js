@@ -1,27 +1,28 @@
-import React, { Component } from 'react';
-import api from '../api';
+import React, { Component } from "react";
+import api from "../api";
 
 class Countries extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       countries: []
-    }
+    };
   }
   componentDidMount() {
-    api.getCountries()
+    api
+      .getCountries()
       .then(countries => {
-        console.log(countries)
+        console.log(countries);
         this.setState({
           countries: countries
-        })
+        });
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   }
-  render() {                
+  render() {
     return (
       <div className="Countries">
-        <h2>List of countries</h2>
+        <h2>List of news</h2>
         {this.state.countries.map((c, i) => <li key={i}>{c.name}</li>)}
       </div>
     );
