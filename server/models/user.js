@@ -12,14 +12,14 @@ const userSchema = new Schema({
     {
       categoryName: {
         type: String,
-        required: [true, "A type is required"],
-        enum: [
+        required: [true, "A type is required"]
+        /*enum: [
           "Artificial Intelligence",
           "Business Intelligence",
           "Machine Learning",
           "Big Data",
           "Social Challenges"
-        ]
+        ]*/
       },
       contentName: {
         type: String,

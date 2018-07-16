@@ -7,31 +7,42 @@ import {
   CardTitle,
   CardSubtitle,
   Button,
-  NavLink
+  NavLink,
+  Badge
 } from "reactstrap";
 
 class newsCard extends Component {
   isimgDefined() {
-    console.log("evaluatepic", this.props.value.urlToImage);
+    // console.log("evaluatepic", this.props.value.urlToImage);
     if (this.props.value.urlToImage == undefined) {
       return false;
     }
 
     return true;
   }
+
+  openInNewTab(url) {
+    let win = window.open(url, "_blank");
+    win.focus();
+  }
+
   render() {
     let cardTitle = this.props.value.title;
     let cardAuthor = this.props.value.author;
     let cardUrl = this.props.value.url;
     let cardDescription = this.props.value.description;
     let imgUrl = this.props.value.urlToImage;
-    //console.log("trynig out url", imgUrl);
+    let tag = this.props.value.tag;
+
     let defaultImg =
       "https://www.cbronline.com/wp-content/uploads/2016/06/what-is-URL.jpg";
     //console.log("tryout default", defaultImg);
     return (
       <div>
         <Card>
+          <h500>
+            <Badge>{tag}</Badge>
+          </h500>
           {!this.isimgDefined() && (
             <CardImg top width="100%" src={defaultImg} alt="Card image cap" />
           )}
@@ -41,11 +52,11 @@ class newsCard extends Component {
 
           <CardBody>
             <CardTitle>{cardTitle}</CardTitle>
-            <CardSubtitle>{cardAuthor}</CardSubtitle>
             <CardText>{cardDescription}</CardText>
 
-            <NavLink href={cardUrl}>Link to Article</NavLink>
-            <Button>Button</Button>
+            <Button onClick={() => this.openInNewTab(cardUrl)}>
+              Learn more
+            </Button>
           </CardBody>
         </Card>
       </div>

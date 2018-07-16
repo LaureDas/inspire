@@ -43,11 +43,7 @@ export default class Header extends React.Component {
               <NavItem>
                 <NavLink href="/about/">About Inspire</NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/LaureDas/inspire">
-                  Creator's GitHub
-                </NavLink>
-              </NavItem>
+
               <NavItem>
                 {!api.isLoggedIn() && <NavLink href="/signup">Signup</NavLink>}
               </NavItem>
@@ -61,18 +57,25 @@ export default class Header extends React.Component {
                   </NavLink>
                 )}
               </NavItem>
-              <NavItem>
-                <NavLink href="/secret">Secret</NavLink>
-              </NavItem>
+
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  Options
+                  More
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>Option 1</DropdownItem>
-                  <DropdownItem>Option 2</DropdownItem>
+                  <DropdownItem>
+                    <NavItem>
+                      <NavLink href="https://github.com/LaureDas/inspire">
+                        Creator's GitHub
+                      </NavLink>
+                    </NavItem>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <NavItem>
+                      <NavLink href="/secret">Secret</NavLink>
+                    </NavItem>
+                  </DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem>Reset</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>

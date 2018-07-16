@@ -12,12 +12,26 @@ import "./App.css";
 import Header from "./Header";
 import About from "./About";
 import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  Collapse,
+  Navbar,
+  Button,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from "reactstrap";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      countries: []
+      content: []
     };
   }
 
@@ -25,12 +39,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <header className="App-header">
-          <h1 className="App-title">Welcome to your Learning Platform</h1>
-          <Link to="/">Home</Link>
-          <Link to="/countries">Countries</Link>
-          <Link to="/add-country">Add country</Link>
-        </header>
+
         <Switch>
           <Route path="/" exact component={News} />
           <Route path="/countries" component={Countries} />
