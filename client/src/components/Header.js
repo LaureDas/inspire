@@ -13,6 +13,7 @@ import {
   DropdownItem
 } from "reactstrap";
 import api from "../api";
+import FA from "react-fontawesome";
 
 export default class Header extends React.Component {
   constructor(props) {

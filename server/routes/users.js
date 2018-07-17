@@ -1,29 +1,53 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const User = require('../models/user');
-const passport = require('passport');
-const config = require('../configs/index');
+const User = require("../models/user");
 
-const cloudinary = require('cloudinary');
-const cloudinaryStorage = require('multer-storage-cloudinary');
-const multer = require('multer');
+const config = require("../configs/index");
+const jwt = require("jwt-simple");
+const passport = require("passport");
+const cloudinary = require("cloudinary");
+const cloudinaryStorage = require("multer-storage-cloudinary");
+const multer = require("multer");
 
 const storage = cloudinaryStorage({
   cloudinary,
-  folder: 'my-images',
-  allowedFormats: ['jpg', 'png', 'gif'],
+  folder: "my-images",
+  allowedFormats: ["jpg", "png", "gif"]
 });
 
 const parser = multer({ storage });
 
-
 // Route to get all users
-router.get('/', (req, res, next) => {
-  User.find()
-    .then(users => {
-      res.json(users)
-    })
+router.get("/", (req, res, next) => {
+  User.find().then(users => {
+    res.json(users);
+  });
 });
+
+router.post(
+  "/add-favourite",
+  passport.authenticate("jwt", config.jwtSession),
+  (req, res, next) => {
+    console.log("body", req.body);
+    let article = {
+      categoryName: req.body.tag,
+
+      data: {
+        title: req.body.cardTitle,
+        description: req.body.cardDescription,
+        imgUrl: req.body.imgUrl
+      }
+    };
+    User.findByIdAndUpdate(
+      req.user.id,
+      { $push: { favorites: article } },
+      { new: true }
+    ).then(user => {
+      console.log(user);
+      res.json(user);
+    });
+  }
+);
 
 // Route to add a picture on one user with Cloudinary
 // To perform the request throw Postman, you need
@@ -36,15 +60,18 @@ router.get('/', (req, res, next) => {
 //     <input type="file" name="picture" />
 //     <input type="submit" value="Upload" />
 //   </form>
-router.post('/first-user/pictures', parser.single('picture'), (req, res, next) => {
-  console.log('DEBUG req.file', req.file);
-  User.findOneAndUpdate({}, { pictureUrl: req.file.url })
-    .then(() => {
+router.post(
+  "/first-user/pictures",
+  parser.single("picture"),
+  (req, res, next) => {
+    console.log("DEBUG req.file", req.file);
+    User.findOneAndUpdate({}, { pictureUrl: req.file.url }).then(() => {
       res.json({
         success: true,
         pictureUrl: req.file.url
-      })
-    })
-});
+      });
+    });
+  }
+);
 
 module.exports = router;

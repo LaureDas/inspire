@@ -12,7 +12,7 @@ const userSchema = new Schema({
     {
       categoryName: {
         type: String,
-        required: [true, "A type is required"]
+        required: [true, "A category is required"]
         /*enum: [
           "Artificial Intelligence",
           "Business Intelligence",
@@ -21,13 +21,13 @@ const userSchema = new Schema({
           "Social Challenges"
         ]*/
       },
-      contentName: {
+      /*contentName: {
         type: String,
         required: [true, "A type is required"],
         enum: ["news", "video", "events"]
-      },
+      },*/
       data: {
-        id: { type: String, required: [true, "An id is required"] },
+        // id: { type: String, required: [true, "An id is required"] },
         title: String,
         description: String,
         imgUrl: String

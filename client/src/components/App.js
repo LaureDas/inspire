@@ -11,7 +11,6 @@ import logo from "../logo.svg";
 import "./App.css";
 import Header from "./Header";
 import About from "./About";
-import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Collapse,
   Navbar,

@@ -78,11 +78,7 @@ class News extends Component {
         <Container>
           <Row>
             {this.state.news
-              .filter(article => {
-                //HERE WRITE FUNCTION THAT FILTERS
-                //if(article.tag===this.state)
-                return true;
-              })
+              .filter(article => this.state.tagsSelected[article.tag])
               .map(newsCard => (
                 <Col xs="3" sm="4">
                   <Card key={newsCard.id} value={newsCard} />

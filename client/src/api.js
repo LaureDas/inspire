@@ -27,6 +27,17 @@ export default {
       .catch(errHandler);
   },
 
+  getFav(card) {
+    return service
+      .post("/users/add-favourite", card)
+      .then(res => {
+        console.log("card in here", card);
+        res.data;
+        console.log("resdata fav", res.data);
+      })
+      .catch(errHandler);
+  },
+
   signup(userInfo) {
     return service
       .post("/signup", userInfo)
