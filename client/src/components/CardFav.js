@@ -38,7 +38,7 @@ class CardFav extends Component {
   }
 
   render() {
-    console.log("FAVORITE CARD props", this.cardFav);
+    //console.log("FAVORITE CARD props", this.cardFav);
     let defaultImg =
       "https://www.cbronline.com/wp-content/uploads/2016/06/what-is-URL.jpg";
     // console.log("tryout default", defaultImg);
