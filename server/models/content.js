@@ -4,7 +4,7 @@ const contentSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "The content's name is required"],
-    enum: ["news", "video", "events"]
+    enum: ["news", "videos", "events"]
   },
   api: {
     method: String,
