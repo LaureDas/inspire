@@ -45,7 +45,14 @@ export default {
       })
       .catch(errHandler);
   },
-
+  postCategory(newCategory) {
+    return service
+      .post("/categories/", newCategory)
+      .then(res => {
+        res.data;
+      })
+      .catch(errHandler);
+  },
   signup(userInfo) {
     return service
       .post("/signup", userInfo)

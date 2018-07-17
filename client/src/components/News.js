@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import newsApi from "../newsApi";
-import { Container, Row, Col, Button } from "reactstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  FormGroup,
+  Label,
+  Input
+} from "reactstrap";
 import Card from "./Card";
 //import categories from "../categories";
 import api from "../api";
@@ -80,7 +88,7 @@ class News extends Component {
             {this.state.news
               .filter(article => this.state.tagsSelected[article.tag])
               .map(newsCard => (
-                <Col xs="3" sm="4">
+                <Col xs="3">
                   <Card key={newsCard.id} value={newsCard} />
                 </Col>
               ))}
