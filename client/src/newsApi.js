@@ -45,8 +45,8 @@ export default {
         "/artificial intelligence&language=en&apiKey=364b0c6a89c74ab5bb5081752d4e1095"
       )
       .then(res => {
-        res.data;
-        console.log("resdataAI", res.data);
+        res.data.articles;
+        console.log("resdataAI", res.data.articles);
       })
       .catch(errHandler);
   },
@@ -56,7 +56,7 @@ export default {
         "/machine learning&language=en&apiKey=364b0c6a89c74ab5bb5081752d4e1095"
       )
       .then(res => {
-        res.data;
+        res.data.articles;
         console.log("resdataML", res.data);
       })
       .catch(errHandler);

@@ -24,18 +24,30 @@ router.get("/", (req, res, next) => {
   });
 });
 
+router.get(
+  "/favourite",
+  passport.authenticate("jwt", config.jwtSession),
+  (req, res, next) => {
+    User.findById(req.user.id).then(user => {
+      console.log(user.favorites);
+      res.json(user.favorites);
+    });
+  }
+);
+
 router.post(
   "/add-favourite",
   passport.authenticate("jwt", config.jwtSession),
   (req, res, next) => {
-    console.log("body", req.body);
+    //console.log("body", req.body);
     let article = {
       categoryName: req.body.tag,
 
       data: {
         title: req.body.cardTitle,
         description: req.body.cardDescription,
-        imgUrl: req.body.imgUrl
+        imgUrl: req.body.imgUrl,
+        url: req.body.cardUrl
       }
     };
     User.findByIdAndUpdate(
@@ -43,7 +55,7 @@ router.post(
       { $push: { favorites: article } },
       { new: true }
     ).then(user => {
-      console.log(user);
+      //console.log(user);
       res.json(user);
     });
   }

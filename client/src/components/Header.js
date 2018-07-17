@@ -58,6 +58,11 @@ export default class Header extends React.Component {
                   </NavLink>
                 )}
               </NavItem>
+              <NavItem>
+                {api.isLoggedIn() && (
+                  <NavLink href="/profile"> My Interests</NavLink>
+                )}
+              </NavItem>
 
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>

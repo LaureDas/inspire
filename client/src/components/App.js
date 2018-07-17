@@ -11,6 +11,7 @@ import logo from "../logo.svg";
 import "./App.css";
 import Header from "./Header";
 import About from "./About";
+import Profile from "./Profile";
 import {
   Collapse,
   Navbar,
@@ -38,8 +39,8 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-
         <Switch>
+          <Route path="/profile" component={Profile} />
           <Route path="/" exact component={News} />
           <Route path="/countries" component={Countries} />
           <Route path="/add-country" component={AddCountry} />

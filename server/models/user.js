@@ -29,8 +29,10 @@ const userSchema = new Schema({
       data: {
         // id: { type: String, required: [true, "An id is required"] },
         title: String,
+        author: String,
         description: String,
-        imgUrl: String
+        imgUrl: String,
+        url: String
       }
     }
   ]

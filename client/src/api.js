@@ -27,6 +27,14 @@ export default {
       .catch(errHandler);
   },
 
+  getMyFav() {
+    return service
+      .get("users/favourite")
+      .then(res => {
+        return res.data;
+      })
+      .catch(errHandler);
+  },
   getFav(card) {
     return service
       .post("/users/add-favourite", card)

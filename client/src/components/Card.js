@@ -16,7 +16,7 @@ import {
 class newsCard extends Component {
   constructor(props) {
     super(props);
-    this.card = {
+    this.cardNews = {
       cardTitle: this.props.value.title,
       cardAuthor: this.props.value.author,
       cardUrl: this.props.value.url,
@@ -24,17 +24,17 @@ class newsCard extends Component {
       imgUrl: this.props.value.urlToImage,
       tag: this.props.value.tag
     };
-    this.cardTitle = this.props.value.title;
-    this.cardAuthor = this.props.value.author;
-    this.cardUrl = this.props.value.url;
-    this.cardDescription = this.props.value.description;
-    this.imgUrl = this.props.value.urlToImage;
-    this.tag = this.props.value.tag;
+    // this.cardTitle = this.props.value.title;
+    // this.cardAuthor = this.props.value.author;
+    // this.cardUrl = this.props.value.url;
+    // this.cardDescription = this.props.value.description;
+    // this.imgUrl = this.props.value.urlToImage;
+    // this.tag = this.props.value.tag;
   }
 
   isimgDefined() {
-    // console.log("evaluatepic", this.props.value.urlToImage);
-    if (this.props.value.urlToImage == undefined) {
+    // console.log("evaluatepic", this.cardNews.imgUrl);
+    if (this.cardNews.imgUrl == null) {
       return false;
     }
 
@@ -45,9 +45,10 @@ class newsCard extends Component {
     let win = window.open(url, "_blank");
     win.focus();
   }
+
   handleClick(e, card) {
     e.preventDefault();
-    console.log(e, card);
+
     api
       .getFav(card)
       .then(result => {
@@ -61,33 +62,34 @@ class newsCard extends Component {
   render() {
     let defaultImg =
       "https://www.cbronline.com/wp-content/uploads/2016/06/what-is-URL.jpg";
-    //console.log("tryout default", defaultImg);
+    // console.log("tryout default", defaultImg);
+
     return (
       <div>
         <Card>
           <h500>
-            <Badge>{this.tag}</Badge>
+            <Badge>{this.cardNews.tag}</Badge>
           </h500>
           {!this.isimgDefined() && (
+            <CardImg top width="100%" src={defaultImg} alt="Card image cap" />
+          )}
+          {this.isimgDefined() && (
             <CardImg
               top
               width="100%"
-              src={this.defaultImg}
+              src={this.cardNews.imgUrl}
               alt="Card image cap"
             />
           )}
-          {this.isimgDefined() && (
-            <CardImg top width="100%" src={this.imgUrl} alt="Card image cap" />
-          )}
 
           <CardBody>
-            <CardTitle>{this.cardTitle}</CardTitle>
-            <CardText>{this.cardDescription}</CardText>
+            <CardTitle>{this.cardNews.cardTitle}</CardTitle>
+            <CardText>{this.cardNews.cardDescription}</CardText>
             {/* <Button bsSize="large"> */}
-            <FA name="star" onClick={e => this.handleClick(e, this.card)} />
+            <FA name="star" onClick={e => this.handleClick(e, this.cardNews)} />
             {/* </Button> */}
 
-            <Button onClick={() => this.openInNewTab(this.cardUrl)}>
+            <Button onClick={() => this.openInNewTab(this.cardNews.cardUrl)}>
               Learn more
             </Button>
           </CardBody>
