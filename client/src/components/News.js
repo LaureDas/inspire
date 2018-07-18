@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import newsApi from "../newsApi";
 import videoApi from "../videoApi";
+import VideoCard from "./VideoCard";
 
 import {
   Container,
@@ -68,20 +69,38 @@ class News extends Component {
             })
             .catch(err => console.log(err));
         }
-        for (let i = 0; i < categories.length; i++) {
-          const tag = categories[i].name;
-          videoApi.getVideos(tag).then(videos => {
-            this.setState({
-              videos: [
-                ...this.state.videos,
-                ...videos.map(video => ({
-                  ...video,
-                  tag: tag,
-                  type: "Video"
-                }))
-              ]
-            });
-          });
+
+        for (let i = 0; i < this.state.categories.length; i++) {
+          const tag = this.state.categories[i].name;
+          const type = "Video";
+          //console.log(tag);
+          //console.log("checkcate", this.state.categories[i].name);
+          videoApi
+            .getVideos(tag)
+            .then(videos => {
+              console.log("videosfirstcall", videos);
+              this.setState({
+                videos: [
+                  ...this.state.videos,
+                  ...videos.map(video => ({
+                    url:
+                      "https://www.youtube.com/embed/" +
+                      video.id.channelId +
+                      "/autoplay=0",
+                    description: video.snippet.description,
+                    title: video.snippet.channelTitle,
+
+                    tag: tag,
+                    type: "Video"
+                  }))
+                ],
+                typeSelected: {
+                  ...this.state.typeSelected,
+                  [type]: true
+                }
+              });
+            })
+            .catch(err => console.log(err));
         }
       })
       .catch(err => console.log(err));
@@ -98,6 +117,7 @@ class News extends Component {
     });
   }
   handleTypeClick(e, type) {
+    console.log("click", type);
     e.preventDefault();
     this.setState({
       typeSelected: {
@@ -108,9 +128,10 @@ class News extends Component {
   }
 
   render() {
-    console.log("this.state.videos.", this.statevideos);
+    //console.log("this.state.videos.", this.state.videos);
     //console.log("type", this.state.typeSelected);
     //console.log("news", this.state.news);
+    //console.log("typcatee", this.state.categories);
 
     return (
       <div className="box">
@@ -144,10 +165,29 @@ class News extends Component {
         <Container>
           <Row>
             {this.state.news
-              .filter(article => this.state.tagsSelected[article.tag])
+              .filter(
+                article =>
+                  this.state.tagsSelected[article.tag] &&
+                  this.state.typeSelected[article.type]
+              )
               .map(newsCard => (
                 <Col sm="3">
                   <Card key={newsCard.id} value={newsCard} />
+                </Col>
+              ))}
+          </Row>
+        </Container>
+        <Container>
+          <Row>
+            {this.state.videos
+              .filter(
+                video =>
+                  this.state.tagsSelected[video.tag] &&
+                  this.state.typeSelected[video.type]
+              )
+              .map(videoCard => (
+                <Col sm="3">
+                  <VideoCard key={videoCard.id} value={videoCard} />
                 </Col>
               ))}
           </Row>

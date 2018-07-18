@@ -14,25 +14,39 @@ export default {
   videoApi: videoApi,
 
   getVideos(searchTerm) {
-    videoApi
+    return videoApi
       .get(searchTerm + "&key=AIzaSyBEu_ruW84j3XF_NKE1-_hBqihddnf1VEQ")
-      .then(response => {
-        console.log("videos +searchthrm", response.data.items[0]);
-        return response.data.items;
-        /*let videos = [
-          `https://www.youtube.com/embed/${
-            response.data.items[0].id.videoId
-          }?autoplay=0`,
-          `https://www.youtube.com/embed/${
-            response.data.items[1].id.videoId
-          }?autoplay=0`,
-          `https://www.youtube.com/embed/${
-            response.data.items[2].id.videoId
-          }?autoplay=0`
+      .then(
+        response =>
+          //console.log("videos +searchthrm", response.data.items);
 
-          
-        ];*/
-      })
+          //let videoArray = [
+          //   {
+          //     url: `https://www.youtube.com/embed/${
+          //       response.data.items[0].id.channelId
+          //     }?autoplay=0`,
+          //     description: response.data.items[0].snippet.description,
+          //     title: response.data.items[0].snippet.channelTitle
+          //   },
+          //   {
+          //     url: `https://www.youtube.com/embed/${
+          //       response.data.items[1].id.channelId
+          //     }?autoplay=0`,
+          //     description: response.data.items[1].snippet.description,
+          //     title: response.data.items[1].snippet.channelTitle
+          //   },
+
+          //   {
+          //     url: `https://www.youtube.com/embed/${
+          //       response.data.items[2].id.channelId
+          //     }?autoplay=0`,
+          //     description: response.data.items[2].snippet.description,
+          //     title: response.data.items[2].snippet.channelTitle
+          //   }
+          // ];
+          //console.log("videoa", videoArray);
+          response.data.items
+      )
       .catch(errHandler);
   }
 };
