@@ -78,18 +78,17 @@ class News extends Component {
           videoApi
             .getVideos(tag)
             .then(videos => {
-              console.log("videosfirstcall", videos);
+              // console.log("videosfirstcall", videos);
               this.setState({
                 videos: [
                   ...this.state.videos,
                   ...videos.map(video => ({
                     url:
                       "https://www.youtube.com/embed/" +
-                      video.id.channelId +
+                      video.id.videoId +
                       "/autoplay=0",
                     description: video.snippet.description,
                     title: video.snippet.channelTitle,
-
                     tag: tag,
                     type: "Video"
                   }))

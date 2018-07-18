@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import FA from "react-fontawesome";
 import api from "../api";
 import "./Card.css";
-import Shiitake from "shiitake";
+//import Shiitake from "shiitake";
+//import Iframe from "react-iframe";
+import Video from "./Video";
+
 import {
   Card,
   CardImg,
@@ -53,7 +56,7 @@ class videoCard extends Component {
       "https://www.cbronline.com/wp-content/uploads/2016/06/what-is-URL.jpg";
     // console.log("tryout default", defaultImg);
     // console.log("card", this.cardVideo);
-
+    let url = this.cardVideo.cardUrl;
     return (
       <div>
         <Card className="card">
@@ -62,13 +65,7 @@ class videoCard extends Component {
             <Badge className="type">{this.cardVideo.type}</Badge>
           </CardHeader>
 
-          <CardImg
-            className="cardImg"
-            top
-            width="100%"
-            src={defaultImg}
-            alt="Card image cap"
-          />
+          <Video value={url} />
 
           <CardBody className="cardBody">
             <CardTitle className="body">{this.cardVideo.cardTitle}</CardTitle>

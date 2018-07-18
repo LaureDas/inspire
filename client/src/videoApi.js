@@ -2,7 +2,9 @@ import axios from "axios";
 
 const videoApi = axios.create({
   baseURL:
+    // "https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.search.list"
     "https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q="
+  //https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=big_data&type=video&videoDefinition=high&
 });
 
 const errHandler = err => {
@@ -15,7 +17,10 @@ export default {
 
   getVideos(searchTerm) {
     return videoApi
-      .get(searchTerm + "&key=AIzaSyBEu_ruW84j3XF_NKE1-_hBqihddnf1VEQ")
+      .get(
+        searchTerm +
+          "&language=en&type=video&videoDefinition=high&key=AIzaSyBEu_ruW84j3XF_NKE1-_hBqihddnf1VEQ"
+      )
       .then(
         response =>
           //console.log("videos +searchthrm", response.data.items);
