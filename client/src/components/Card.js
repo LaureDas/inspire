@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import FA from "react-fontawesome";
 import api from "../api";
+import "./Card.css";
+import Shiitake from "shiitake";
 import {
   Card,
   CardImg,
@@ -10,7 +12,9 @@ import {
   CardSubtitle,
   Button,
   NavLink,
-  Badge
+  Badge,
+  CardHeader,
+  CardFooter
 } from "reactstrap";
 
 class newsCard extends Component {
@@ -22,14 +26,9 @@ class newsCard extends Component {
       cardUrl: this.props.value.url,
       cardDescription: this.props.value.description,
       imgUrl: this.props.value.urlToImage,
-      tag: this.props.value.tag
+      tag: this.props.value.tag,
+      type: this.props.value.type
     };
-    // this.cardTitle = this.props.value.title;
-    // this.cardAuthor = this.props.value.author;
-    // this.cardUrl = this.props.value.url;
-    // this.cardDescription = this.props.value.description;
-    // this.imgUrl = this.props.value.urlToImage;
-    // this.tag = this.props.value.tag;
   }
 
   isimgDefined() {
@@ -63,18 +62,28 @@ class newsCard extends Component {
     let defaultImg =
       "https://www.cbronline.com/wp-content/uploads/2016/06/what-is-URL.jpg";
     // console.log("tryout default", defaultImg);
+    // console.log("card", this.cardNews);
 
     return (
       <div>
-        <Card>
-          <h500>
-            <Badge>{this.cardNews.tag}</Badge>
-          </h500>
+        <Card className="card">
+          <CardHeader>
+            <Badge className="tag">{this.cardNews.tag}</Badge>{" "}
+            <Badge className="type">{this.cardNews.type}</Badge>
+          </CardHeader>
+
           {!this.isimgDefined() && (
-            <CardImg top width="100%" src={defaultImg} alt="Card image cap" />
+            <CardImg
+              className="cardImg"
+              top
+              width="100%"
+              src={defaultImg}
+              alt="Card image cap"
+            />
           )}
           {this.isimgDefined() && (
             <CardImg
+              className="cardImg"
               top
               width="100%"
               src={this.cardNews.imgUrl}
@@ -82,16 +91,29 @@ class newsCard extends Component {
             />
           )}
 
-          <CardBody>
-            <CardTitle>{this.cardNews.cardTitle}</CardTitle>
-            <CardText>{this.cardNews.cardDescription}</CardText>
-            {/* <Button bsSize="large"> */}
-            <FA name="star" onClick={e => this.handleClick(e, this.cardNews)} />
-            {/* </Button> */}
+          <CardBody className="cardBody">
+            <CardTitle className="body">{this.cardNews.cardTitle}</CardTitle>
+            <hr />
+            <CardText className="body">
+              <Shiitake lines={3} throttleRate={200} className="body">
+                {this.cardNews.cardDescription}
+              </Shiitake>
+            </CardText>
 
-            <Button onClick={() => this.openInNewTab(this.cardNews.cardUrl)}>
+            <Button
+              className="body"
+              onClick={() => this.openInNewTab(this.cardNews.cardUrl)}
+            >
               Learn more
             </Button>
+            <CardFooter>
+              <Button bsSize="large">
+                <FA
+                  name="star"
+                  onClick={e => this.handleClick(e, this.cardNews)}
+                />
+              </Button>
+            </CardFooter>
           </CardBody>
         </Card>
       </div>

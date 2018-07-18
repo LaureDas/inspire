@@ -1,0 +1,22 @@
+.tag {
+  background-color: rgba(58, 58, 110, 0.74);
+  font-size: 10px;
+}
+
+.type {
+  background-color: rgba(75, 75, 231, 0.74);
+
+  font-size: 10px;
+}
+
+
+.body {
+  font-size: 10px;
+}
+
+.cardImg {
+  height: 20%;
+}
+.cardBody {
+  height: 20%;
+}

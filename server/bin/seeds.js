@@ -5,7 +5,7 @@ const dataCategories = require("../data/categories.json");
 const dataContents = require("../data/content.json");
 
 mongoose.connect(
-  "mongodb://heroku_5rsjh9ht:bpluafmd24kgeo35dep90pcrt2@ds141221.mlab.com:41221/heroku_5rsjh9ht",
+  "mongodb://localhost/inspire-platform",
   { useMongoClient: true }
 );
 

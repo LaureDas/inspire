@@ -48,6 +48,7 @@ class CardFav extends Component {
         <Card>
           <h500>
             <Badge>{this.cardFav.tag}</Badge>
+            <Badge>{this.cardFav.type}</Badge>
           </h500>
           {!this.isimgDefined() && (
             <CardImg top width="100%" src={defaultImg} alt="Card image cap" />

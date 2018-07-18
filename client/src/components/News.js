@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import newsApi from "../newsApi";
 import videoApi from "../videoApi";
+
 import {
   Container,
   Row,
@@ -8,9 +9,11 @@ import {
   Button,
   FormGroup,
   Label,
-  Input
+  Input,
+  Jumbotron
 } from "reactstrap";
 import Card from "./Card";
+import "./Container.css";
 //import categories from "../categories";
 import api from "../api";
 
@@ -24,7 +27,7 @@ class News extends Component {
       tagsSelected: {},
       categories: [],
       videos: [],
-      type: ["video", "news", "jobs", "events"],
+      type: ["Video", "News", "Jobs", "Events"],
       typeSelected: {}
     };
   }
@@ -36,9 +39,11 @@ class News extends Component {
         this.setState({
           categories: categories
         });
+
         for (let i = 0; i < categories.length; i++) {
           const tag = categories[i].name;
-          const type = "news";
+          // console.log("tag", tag);
+          const type = "News";
           newsApi
             .getNews(tag)
             .then(articles => {
@@ -62,7 +67,9 @@ class News extends Component {
               });
             })
             .catch(err => console.log(err));
-
+        }
+        for (let i = 0; i < categories.length; i++) {
+          const tag = categories[i].name;
           videoApi.getVideos(tag).then(videos => {
             this.setState({
               videos: [
@@ -70,7 +77,7 @@ class News extends Component {
                 ...videos.map(video => ({
                   ...video,
                   tag: tag,
-                  type: "video"
+                  type: "Video"
                 }))
               ]
             });
@@ -102,36 +109,44 @@ class News extends Component {
 
   render() {
     console.log("this.state.videos.", this.statevideos);
+    //console.log("type", this.state.typeSelected);
+    //console.log("news", this.state.news);
+
     return (
-      <div>
-        <header className="App-header">
-          <h1 className="App-title">Welcome to your Learning Platform</h1>
-          {this.state.categories.map(category => (
-            <Button
-              outline={!this.state.tagsSelected[category.name]}
-              onClick={e => this.handleClick(e, category.name)}
-              key={category.name}
-            >
-              {category.name}
-            </Button>
-          ))}
-          <br />
-          {this.state.type.map(type => (
-            <Button
-              outline={!this.state.typeSelected[type]}
-              onClick={e => this.handleTypeClick(e, type)}
-              key={type}
-            >
-              {type}
-            </Button>
-          ))}
-        </header>
+      <div className="box">
+        <div className="jumboClass">
+          <Jumbotron>
+            <h6 className="display-12">Welcome to your learning platform!</h6>
+            <p className="lead">
+              {this.state.categories.map(category => (
+                <Button
+                  outline={!this.state.tagsSelected[category.name]}
+                  onClick={e => this.handleClick(e, category.name)}
+                  key={category.name}
+                >
+                  {category.name}
+                </Button>
+              ))}{" "}
+            </p>
+            <hr className="my-2" />
+            {this.state.type.map(type => (
+              <Button
+                outline={!this.state.typeSelected[type]}
+                onClick={e => this.handleTypeClick(e, type)}
+                key={type}
+              >
+                {type}
+              </Button>
+            ))}
+          </Jumbotron>
+        </div>
+
         <Container>
           <Row>
             {this.state.news
               .filter(article => this.state.tagsSelected[article.tag])
               .map(newsCard => (
-                <Col xs="3">
+                <Col sm="3">
                   <Card key={newsCard.id} value={newsCard} />
                 </Col>
               ))}

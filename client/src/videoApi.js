@@ -15,9 +15,9 @@ export default {
 
   getVideos(searchTerm) {
     videoApi
-      .get(searchTerm + "&key=AIzaSyB54dfXHWxcG2E-1zijiWtCYGTOOeWYTto")
+      .get(searchTerm + "&key=AIzaSyBEu_ruW84j3XF_NKE1-_hBqihddnf1VEQ")
       .then(response => {
-        console.log("videos +searchthrm", response.data.items[0].id.videoId);
+        console.log("videos +searchthrm", response.data.items[0]);
         return response.data.items;
         /*let videos = [
           `https://www.youtube.com/embed/${
