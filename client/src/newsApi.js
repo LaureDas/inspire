@@ -17,7 +17,8 @@ export default {
       .get(searchTerm + "&language=en&apiKey=364b0c6a89c74ab5bb5081752d4e1095")
       .then(res => res.data.articles)
       .catch(errHandler);
-  },
+  }
+  /*,
 
   getNewsBigData() {
     return service
@@ -60,5 +61,5 @@ export default {
         console.log("resdataML", res.data);
       })
       .catch(errHandler);
-  }
+  }*/
 };

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import newsApi from "../newsApi";
+import videoApi from "../videoApi";
 import {
   Container,
   Row,
@@ -21,7 +22,10 @@ class News extends Component {
     this.state = {
       news: [],
       tagsSelected: {},
-      categories: []
+      categories: [],
+      videos: [],
+      type: ["video", "news", "jobs", "events"],
+      typeSelected: {}
     };
   }
 
@@ -34,6 +38,7 @@ class News extends Component {
         });
         for (let i = 0; i < categories.length; i++) {
           const tag = categories[i].name;
+          const type = "news";
           newsApi
             .getNews(tag)
             .then(articles => {
@@ -42,16 +47,34 @@ class News extends Component {
                   ...this.state.news,
                   ...articles.map(article => ({
                     ...article,
-                    tag: tag
+                    tag: tag,
+                    type: type
                   }))
                 ],
                 tagsSelected: {
                   ...this.state.tagsSelected,
                   [tag]: true
+                },
+                typeSelected: {
+                  ...this.state.typeSelected,
+                  [type]: true
                 }
               });
             })
             .catch(err => console.log(err));
+
+          videoApi.getVideos(tag).then(videos => {
+            this.setState({
+              videos: [
+                ...this.state.videos,
+                ...videos.map(video => ({
+                  ...video,
+                  tag: tag,
+                  type: "video"
+                }))
+              ]
+            });
+          });
         }
       })
       .catch(err => console.log(err));
@@ -67,8 +90,18 @@ class News extends Component {
       }
     });
   }
+  handleTypeClick(e, type) {
+    e.preventDefault();
+    this.setState({
+      typeSelected: {
+        ...this.state.typeSelected,
+        [type]: !this.state.typeSelected[type]
+      }
+    });
+  }
 
   render() {
+    console.log("this.state.videos.", this.statevideos);
     return (
       <div>
         <header className="App-header">
@@ -80,6 +113,16 @@ class News extends Component {
               key={category.name}
             >
               {category.name}
+            </Button>
+          ))}
+          <br />
+          {this.state.type.map(type => (
+            <Button
+              outline={!this.state.typeSelected[type]}
+              onClick={e => this.handleTypeClick(e, type)}
+              key={type}
+            >
+              {type}
             </Button>
           ))}
         </header>

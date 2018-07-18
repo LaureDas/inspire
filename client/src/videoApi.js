@@ -1,7 +1,8 @@
 import axios from "axios";
 
-const service = axios.create({
-  baseURL: "https://newsapi.org/v2/everything?q="
+const videoApi = axios.create({
+  baseURL:
+    "https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q="
 });
 
 const errHandler = err => {
@@ -10,15 +11,28 @@ const errHandler = err => {
 };
 
 export default {
-  service: service,
+  videoApi: videoApi,
 
   getVideos(searchTerm) {
-    return service
-      .get(
-        searchTerm +
-          "&language=en&apiKey=AIzaSyB54dfXHWxcG2E-1zijiWtCYGTOOeWYTto"
-      )
-      .then(res => res.data.articles)
+    videoApi
+      .get(searchTerm + "&key=AIzaSyB54dfXHWxcG2E-1zijiWtCYGTOOeWYTto")
+      .then(response => {
+        console.log("videos +searchthrm", response.data.items[0].id.videoId);
+        return response.data.items;
+        /*let videos = [
+          `https://www.youtube.com/embed/${
+            response.data.items[0].id.videoId
+          }?autoplay=0`,
+          `https://www.youtube.com/embed/${
+            response.data.items[1].id.videoId
+          }?autoplay=0`,
+          `https://www.youtube.com/embed/${
+            response.data.items[2].id.videoId
+          }?autoplay=0`
+
+          
+        ];*/
+      })
       .catch(errHandler);
   }
 };
