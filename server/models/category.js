@@ -12,7 +12,8 @@ const categorySchema = new mongoose.Schema({
       "Social Challenges"
     ]*/
   },
-  summary: String
+  summary: String,
+  url: String
 });
 
 const Category = mongoose.model("Category", categorySchema);

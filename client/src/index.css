@@ -1,7 +1,6 @@
 .box {
   margin: 0;
   padding: 0;
-  font-family: "Ostrich-Sans";
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -11,6 +10,11 @@
 
 .navBar {
   font-family: "Lucida Console", Monaco, monospace;
+  background-color: rgb(0, 92, 128) !important;
+}
+.bg-light {
+  background-color: rgb(0, 92, 128) !important;
+  color: white !important;
 }
 .content {
   background-color: azure;

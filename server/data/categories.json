@@ -2,26 +2,31 @@
   {
     "name": "Business Intelligence",
     "summary":
-      "The term Business Intelligence refers to technologies, applications and practices for the collection, integration, analysis, and presentation of business information. The purpose of Business Intelligence is to support better business decision making. Essentially, Business Intelligence systems are data-driven Decision Support Systems (DSS). Business Intelligence is sometimes used interchangeably with briefing books, report and query tools and executive information systems."
+      "The term Business Intelligence refers to technologies, applications and practices for the collection, integration, analysis, and presentation of business information. The purpose of Business Intelligence is to support better business decision making. Essentially, Business Intelligence systems are data-driven Decision Support Systems (DSS). Business Intelligence is sometimes used interchangeably with briefing books, report and query tools and executive information systems.",
+    "url": "https://www.wikiwand.com/en/Artificial_intelligence"
   },
   {
     "name": "Artificial Intelligence",
     "summary":
-      "AI (artificial intelligence) is the simulation of human intelligence processes by machines, especially computer systems. These processes include learning (the acquisition of information and rules for using the information), reasoning (using the rules to reach approximate or definite conclusions) and self-correction. Particular applications of AI include expert systems, speech recognition and machine vision."
+      "AI (artificial intelligence) is the simulation of human intelligence processes by machines, especially computer systems. These processes include learning (the acquisition of information and rules for using the information), reasoning (using the rules to reach approximate or definite conclusions) and self-correction. Particular applications of AI include expert systems, speech recognition and machine vision.",
+    "url": "https://www.wikiwand.com/en/Business_intelligence"
   },
   {
     "name": "Deep Learning",
     "summary":
-      "Deep Learning has evolved hand-in-hand with the digital era, which has brought about an explosion of data in all forms and from every region of the world. This data, known simply as Big Data, is drawn from sources like social media, internet search engines, e-commerce platforms, online cinemas and more. This enormous amount of data is readily accessible and can be shared through fintech applications like cloud computing. However, the data, which normally is unstructured, is so vast that it could take decades for humans to comprehend it and extract relevant information. "
+      "Deep Learning has evolved hand-in-hand with the digital era, which has brought about an explosion of data in all forms and from every region of the world. This data, known simply as Big Data, is drawn from sources like social media, internet search engines, e-commerce platforms, online cinemas and more. This enormous amount of data is readily accessible and can be shared through fintech applications like cloud computing. However, the data, which normally is unstructured, is so vast that it could take decades for humans to comprehend it and extract relevant information. ",
+    "url": "https://www.wikiwand.com/en/Deep_Learning"
   },
   {
     "name": "Big Data",
     "summary":
-      "Big data is a term that describes the large volume of data – both structured and unstructured – that inundates a business on a day-to-day basis. But it’s not the amount of data that’s important. It’s what organizations do with the data that matters. Big data can be analyzed for insights that lead to better decisions and strategic business move"
+      "Big data is a term that describes the large volume of data – both structured and unstructured – that inundates a business on a day-to-day basis. But it’s not the amount of data that’s important. It’s what organizations do with the data that matters. Big data can be analyzed for insights that lead to better decisions and strategic business move",
+    "url": "https://www.wikiwand.com/en/Big_Data"
   },
   {
     "name": "Machine Learning",
     "summary":
-      "Machine Learning is the science of getting computers to learn and act like humans do, and improve their learning over time in autonomous fashion, by feeding them data and information in the form of observations and real-world interactions"
+      "Machine Learning is the science of getting computers to learn and act like humans do, and improve their learning over time in autonomous fashion, by feeding them data and information in the form of observations and real-world interactions",
+    "url": "https://www.wikiwand.com/en/Machine_Learning"
   }
 ]

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import { Route, Switch, NavLink, Link } from 'react-router-dom';
 // import api from '../api';
-// import './Sample.css';
+import "./SummaryCard.css";
 import {
   Card,
   CardImg,
@@ -21,9 +21,28 @@ class SummaryCard extends Component {
     super(props);
     this.cardSummary = {
       cardTitle: this.props.value.name,
-      cardDescription: this.props.value.summary
+      cardDescription: this.props.value.summary,
+      cardUrl: this.props.value.url
     };
   }
+  openInNewTab(url) {
+    let win = window.open(url, "_blank");
+    win.focus();
+  }
+
+  slice(str) {
+    if (str == undefined) {
+      return;
+    } else {
+      //console.log("oldstr", str);
+      let newStr = "";
+
+      newStr = str.slice(0, 300);
+      // console.log("newstr", newStr);
+      return newStr + "...";
+    }
+  }
+
   render() {
     console.log("props received", this.props);
     let defaultImg =
@@ -44,17 +63,16 @@ class SummaryCard extends Component {
             <CardTitle className="body">{this.cardSummary.cardTitle}</CardTitle>
 
             <CardText className="body" display-4>
-              {this.cardSummary.cardDescription}
+              {this.slice(this.cardSummary.cardDescription)}
             </CardText>
-            {/* <div className="flex body">
-               <Button
-                className="btnLearn"
-                className="body"
-                onClick={() => this.openInNewTab(this.cardVideo.cardUrl)}
-              > 
+
+            <Button
+              className="btnLearn"
+              className="body"
+              onClick={() => this.openInNewTab(this.cardSummary.cardUrl)}
+            >
               Learn more
-              </Button>
-            </div>*/}
+            </Button>
           </CardBody>
         </Card>
       </div>

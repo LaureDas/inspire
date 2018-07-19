@@ -1,8 +1,9 @@
-/*import axios from "axios";
+import axios from "axios";
 
 const jobsService = axios.create({
   baseURL:
-    "https://api.meetup.com/2/events?key=42275f242486224a7a23785773e51&group_urlname="
+    "https://www.googleapis.com/jobs/v3/search?part=snippet&order=viewCount&q="
+  // "https://api.meetup.com/2/events?key=42275f242486224a7a23785773e51&group_urlname="
   //"https://jobs.github.com/positions.json?description="
 });
 //42275f242486224a7a23785773e51
@@ -25,4 +26,3 @@ export default {
       .catch(errHandler);
   }
 };
-*/
