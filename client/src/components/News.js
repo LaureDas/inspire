@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import newsApi from "../newsApi";
 import videoApi from "../videoApi";
+import jobsApi from "../jobsApi";
 import VideoCard from "./VideoCard";
+import SummaryCard from "./SummaryCard";
 
 import {
   Container,
@@ -28,7 +30,7 @@ class News extends Component {
       tagsSelected: {},
       categories: [],
       videos: [],
-      type: ["Video", "News", "Jobs", "Events"],
+      type: ["Definitions", "Video", "News", "Jobs"],
       typeSelected: {}
     };
   }
@@ -102,6 +104,14 @@ class News extends Component {
             })
             .catch(err => console.log(err));
         }
+        /*
+        for (let i = 0; i < this.state.types.length; i++) {
+          const tag = this.state.categories[i].name;
+          const type = "Jobs";
+          jobsApi.getJobs(tag).then(jobs => {
+            console.log("jobs gotten", jobs);
+          });
+        }*/
       })
       .catch(err => console.log(err));
   }
@@ -193,6 +203,22 @@ class News extends Component {
                 .map(videoCard => (
                   <Col col-sm-3>
                     <VideoCard key={videoCard.id} value={videoCard} />
+                  </Col>
+                ))}
+            </Row>
+          </Container>
+
+          <Container>
+            <Row>
+              {this.state.categories
+                .filter(
+                  category =>
+                    this.state.tagsSelected[category.name] &&
+                    this.state.typeSelected["Definitions"]
+                )
+                .map(categoryCard => (
+                  <Col col-sm-3>
+                    <SummaryCard value={categoryCard} />
                   </Col>
                 ))}
             </Row>

@@ -10,7 +10,8 @@
   background-size: cover;
   color: white;
   font-size: 40px;
-  font-family: "Ostrich-Sans";
+  padding-top: 40px;
+  font-family: "Lucida Console", Monaco, monospace;
 }
 .form-control {
   width: 50%;

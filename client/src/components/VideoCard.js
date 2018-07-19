@@ -58,7 +58,7 @@ class videoCard extends Component {
       //console.log("oldstr", str);
       let newStr = "";
 
-      newStr = str.slice(0, 200);
+      newStr = str.slice(0, 400);
       // console.log("newstr", newStr);
       return newStr + "...";
     }

@@ -42,7 +42,7 @@ class Signup extends Component {
       <div className="Signup">
         <h1>Signup Here</h1>
         <form>
-          Please, enter your email:{" "}
+          Please, enter your email{" "}
           <input
             className="form-control mx-auto"
             type="text"
@@ -52,7 +52,7 @@ class Signup extends Component {
             }}
           />{" "}
           <br />
-          Please, enter your name:{" "}
+          Please, enter your name{" "}
           <input
             className="form-control mx-auto"
             type="text"
@@ -62,7 +62,7 @@ class Signup extends Component {
             }}
           />{" "}
           <br />
-          Please enter a password:{" "}
+          Please enter a password{" "}
           <input
             className="form-control mx-auto"
             type="password"

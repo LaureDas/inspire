@@ -65,7 +65,7 @@ class newsCard extends Component {
       //console.log("oldstr", str);
       let newStr = "";
 
-      newStr = str.slice(0, 200);
+      newStr = str.slice(0, 300);
       // console.log("newstr", newStr);
       return newStr + "...";
     }

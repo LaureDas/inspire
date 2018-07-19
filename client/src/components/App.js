@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Route, Link, Switch } from "react-router-dom";
 import News from "./News";
-import Countries from "./Countries";
-import AddCountry from "./AddCountry";
+
 import Secret from "./Secret";
 import Login from "./Login";
 import Signup from "./Signup";
@@ -42,8 +41,7 @@ class App extends Component {
         <Switch>
           <Route path="/profile" component={Profile} />
           <Route path="/" exact component={News} />
-          <Route path="/countries" component={Countries} />
-          <Route path="/add-country" component={AddCountry} />
+
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/secret" component={Secret} />
