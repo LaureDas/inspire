@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import api from "../api";
+import "./Signup.css";
 
 class Signup extends Component {
   constructor(props) {
@@ -39,10 +40,11 @@ class Signup extends Component {
   render() {
     return (
       <div className="Signup">
-        <h2>Signup</h2>
+        <h1>Signup Here</h1>
         <form>
-          Email:{" "}
+          Please, enter your email:{" "}
           <input
+            className="form-control mx-auto"
             type="text"
             value={this.state.email}
             onChange={e => {
@@ -50,8 +52,9 @@ class Signup extends Component {
             }}
           />{" "}
           <br />
-          Name:{" "}
+          Please, enter your name:{" "}
           <input
+            className="form-control mx-auto"
             type="text"
             value={this.state.name}
             onChange={e => {
@@ -59,8 +62,9 @@ class Signup extends Component {
             }}
           />{" "}
           <br />
-          Password:{" "}
+          Please enter a password:{" "}
           <input
+            className="form-control mx-auto"
             type="password"
             value={this.state.password}
             onChange={e => {

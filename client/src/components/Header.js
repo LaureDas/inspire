@@ -12,6 +12,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
+import "./Header.css";
 import api from "../api";
 import FA from "react-fontawesome";
 

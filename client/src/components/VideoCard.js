@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import FA from "react-fontawesome";
 import api from "../api";
-import "./Card.css";
+import "./VideoCard.css";
 //import Shiitake from "shiitake";
 //import Iframe from "react-iframe";
 import Video from "./Video";
@@ -51,10 +51,22 @@ class videoCard extends Component {
       });
   }
 
+  slice(str) {
+    if (str == undefined) {
+      return;
+    } else {
+      //console.log("oldstr", str);
+      let newStr = "";
+
+      newStr = str.slice(0, 200);
+      // console.log("newstr", newStr);
+      return newStr + "...";
+    }
+  }
   render() {
     //console.log("videoprops", this.props);
     let defaultImg =
-      "https://www.cbronline.com/wp-content/uploads/2016/06/what-is-URL.jpg";
+      "http://robohub.org/wp-content/uploads/2017/02/grid-AI.jpg";
     // console.log("tryout default", defaultImg);
     // console.log("card", this.cardVideo);
     let id = this.cardVideo.id;
@@ -66,23 +78,23 @@ class videoCard extends Component {
             <Badge className="type">{this.cardVideo.type}</Badge>
           </CardHeader>
 
-          <Video className="video" value={id} />
-
           <CardBody className="cardBody">
+            <Video className="video" value={id} />
             <CardTitle className="body">{this.cardVideo.cardTitle}</CardTitle>
 
             <CardText className="body" display-4>
-              {this.cardVideo.cardDescription}
+              {this.slice(this.cardVideo.cardDescription)}
             </CardText>
             <div className="flex body">
               <Button
+                className="btnLearn"
                 className="body"
                 onClick={() => this.openInNewTab(this.cardVideo.cardUrl)}
               >
                 Learn more
               </Button>
-              <CardFooter>
-                <Button bsSize="large">
+              <CardFooter bsSize="small">
+                <Button bsSize="medium">
                   <FA
                     name="star"
                     onClick={e => this.handleClick(e, this.cardVideo)}

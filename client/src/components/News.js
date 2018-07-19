@@ -59,7 +59,7 @@ class News extends Component {
                 ],
                 tagsSelected: {
                   ...this.state.tagsSelected,
-                  [tag]: true
+                  [tag]: false
                 },
                 typeSelected: {
                   ...this.state.typeSelected,
@@ -96,7 +96,7 @@ class News extends Component {
                 ],
                 typeSelected: {
                   ...this.state.typeSelected,
-                  [type]: true
+                  [type]: false
                 }
               });
             })
@@ -135,8 +135,9 @@ class News extends Component {
 
     return (
       <div className="box">
-        <div>
+        <div className="categories">
           <Jumbotron>
+            <h3>Categories</h3>
             <p className="lead">
               {this.state.categories.map(category => (
                 <Button
@@ -151,9 +152,10 @@ class News extends Component {
               ))}{" "}
             </p>
             <hr className="my-2" />
+            <h4>Types</h4>
             {this.state.type.map(type => (
               <Button
-              size="sm"
+                size="sm"
                 outline={!this.state.typeSelected[type]}
                 onClick={e => this.handleTypeClick(e, type)}
                 key={type}
@@ -164,41 +166,38 @@ class News extends Component {
           </Jumbotron>
         </div>
 
-        <Container>
-       
-          <Row>
-
-            {this.state.news
-              .filter(
-                article =>
-                  this.state.tagsSelected[article.tag] &&
-                  this.state.typeSelected[article.type]
-              )
-              .map(newsCard => (
-
+        <div className="content">
+          <Container>
+            <Row>
+              {this.state.news
+                .filter(
+                  article =>
+                    this.state.tagsSelected[article.tag] &&
+                    this.state.typeSelected[article.type]
+                )
+                .map(newsCard => (
                   <Col col-sm-3>
                     <Card key={newsCard.id} value={newsCard} />
                   </Col>
-                
-              ))}
-          </Row>
-        </Container>
-        <Container>
-          
-          <Row>
-            {this.state.videos
-              .filter(
-                video =>
-                  this.state.tagsSelected[video.tag] &&
-                  this.state.typeSelected[video.type]
-              )
-              .map(videoCard => (
-                <Col col-sm-3>
-                  <VideoCard key={videoCard.id} value={videoCard} />
-                </Col>
-              ))}
-          </Row>
-        </Container>
+                ))}
+            </Row>
+          </Container>
+          <Container>
+            <Row>
+              {this.state.videos
+                .filter(
+                  video =>
+                    this.state.tagsSelected[video.tag] &&
+                    this.state.typeSelected[video.type]
+                )
+                .map(videoCard => (
+                  <Col col-sm-3>
+                    <VideoCard key={videoCard.id} value={videoCard} />
+                  </Col>
+                ))}
+            </Row>
+          </Container>
+        </div>
       </div>
     );
   }

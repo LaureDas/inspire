@@ -1,12 +1,9 @@
 import React, { Component } from "react";
+import "./About.css";
 
 class About extends Component {
   render() {
-    return (
-      <div className="About">
-        Hello this is a quick explanation and rules on how to use the platform
-      </div>
-    );
+    return <div className="about">Welcome to Inspire.AI</div>;
   }
 }
 

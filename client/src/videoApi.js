@@ -19,7 +19,7 @@ export default {
     return videoApi
       .get(
         searchTerm +
-          "&language=en&type=video&videoDefinition=high&key=AIzaSyBEu_ruW84j3XF_NKE1-_hBqihddnf1VEQ"
+          " technology&language=en&type=video&videoDefinition=high&key=AIzaSyBEu_ruW84j3XF_NKE1-_hBqihddnf1VEQ"
       )
       .then(
         response =>

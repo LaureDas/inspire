@@ -30,9 +30,9 @@
   text-align: left;
 }
 .card {
-  height: 250px;
-  width: 250px;
-  margin-bottom: 25px;
+  height: 350px !important;
+  width: 350px !important;
+  margin-bottom: 25px !important;
 }
 
 .card-header {
@@ -59,8 +59,4 @@
 }
 .card-footer {
   padding: 0;
-}
-
-.btn body {
-  background-color: rgba(58, 58, 110, 0.74) !important;
 }

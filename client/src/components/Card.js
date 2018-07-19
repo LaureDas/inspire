@@ -58,12 +58,25 @@ class newsCard extends Component {
       });
   }
 
+  slice(str) {
+    if (str == undefined) {
+      return;
+    } else {
+      //console.log("oldstr", str);
+      let newStr = "";
+
+      newStr = str.slice(0, 200);
+      // console.log("newstr", newStr);
+      return newStr + "...";
+    }
+  }
+
   render() {
     let defaultImg =
-      "https://www.cbronline.com/wp-content/uploads/2016/06/what-is-URL.jpg";
+      "http://robohub.org/wp-content/uploads/2017/02/grid-AI.jpg";
     // console.log("tryout default", defaultImg);
-    // console.log("card", this.cardNews);
-
+    // console.log("card", this.cardNews.cardDescription);
+    //let description = this.cardNews.cardDescription;
     return (
       <div>
         <Card className="card">
@@ -99,7 +112,7 @@ class newsCard extends Component {
             <CardTitle className="body">{this.cardNews.cardTitle}</CardTitle>
 
             <CardText className="body" display-4>
-              {this.cardNews.cardDescription}
+              {this.slice(this.cardNews.cardDescription)}
             </CardText>
             <div className="flex">
               <Button
@@ -110,7 +123,7 @@ class newsCard extends Component {
                 Learn more
               </Button>
               <CardFooter bsSize="small">
-                <Button bsSize="medium">
+                <Button bsSize="medium" className="star">
                   <FA
                     name="star"
                     onClick={e => this.handleClick(e, this.cardNews)}

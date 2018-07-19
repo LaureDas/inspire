@@ -1,5 +1,42 @@
-body {
+.box {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Ostrich-Sans";
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.content {
+  background-color: azure;
+}
+
+.jumbotron {
+  margin: 0 !important;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+}
+
+.col {
+  margin-top: 20px;
+}
+
+.btn-secondary {
+  background-color: rgb(0, 92, 128);
+  border: rgb(0, 92, 128);
+}
+
+.btn-secondary:hover {
+  background-color: rgb(147, 211, 236);
+  border: rgb(147, 211, 236);
+}
+
+.star:hover {
+  background-color: yellow;
+}
+
+.Signup,
+.Login {
+  height: 100vh !important;
 }

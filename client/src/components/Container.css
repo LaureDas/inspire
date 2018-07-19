@@ -12,6 +12,9 @@
   margin-bottom: 5px;
 }
 
+.body btn {
+  background-color: rgb(0, 0, blue);
+}
 .container {
   padding-right: 5px;
   padding-left: 5px;

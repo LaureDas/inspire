@@ -14,7 +14,10 @@ export default {
 
   getNews(searchTerm) {
     return service
-      .get(searchTerm + "&language=en&apiKey=364b0c6a89c74ab5bb5081752d4e1095")
+      .get(
+        searchTerm +
+          "&language=en&sources=techcrunch&sortBy=publishedAt&sortBy=popularity&apiKey=364b0c6a89c74ab5bb5081752d4e1095"
+      )
       .then(res => res.data.articles)
       .catch(errHandler);
   }
