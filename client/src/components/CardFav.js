@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Card.css";
 import {
   Card,
   CardImg,
@@ -8,7 +9,9 @@ import {
   CardSubtitle,
   Button,
   NavLink,
-  Badge
+  Badge,
+  CardHeader,
+  CardFooter
 } from "reactstrap";
 
 class CardFav extends Component {
@@ -46,29 +49,41 @@ class CardFav extends Component {
     return (
       <div>
         <Card>
-          <h500>
-            <Badge>{this.cardFav.tag}</Badge>
-            <Badge>{this.cardFav.type}</Badge>
-          </h500>
+          <CardHeader>
+            <Badge className="tag">{this.cardFav.tag}</Badge>
+            <Badge className="type">{this.cardFav.type}</Badge>
+          </CardHeader>
           {!this.isimgDefined() && (
-            <CardImg top width="100%" src={defaultImg} alt="Card image cap" />
+            <CardImg
+              className="img-responsive"
+              className="img-rounded"
+              className="cardImg"
+              top
+              width="80%"
+              src={defaultImg}
+              alt="Card image cap"
+            />
           )}
           {this.isimgDefined() && (
             <CardImg
+              className="img-responsive"
+              className="img-rounded"
+              className="cardImg"
               top
-              width="100%"
+              width="80%"
               src={this.cardFav.imgUrl}
               alt="Card image cap"
             />
           )}
 
-          <CardBody>
-            <CardTitle>{this.cardFav.cardTitle}</CardTitle>
-            <CardText>{this.cardFav.cardDescription}</CardText>
-
-            <Button onClick={() => this.openInNewTab(this.cardFav.cardUrl)}>
-              Learn more
-            </Button>
+          <CardBody className="cardBody">
+            <CardTitle className="body">{this.cardFav.cardTitle}</CardTitle>
+            <CardText className="body">{this.cardFav.cardDescription}</CardText>
+            <CardFooter bsSize="small">
+              <Button onClick={() => this.openInNewTab(this.cardFav.cardUrl)}>
+                Learn more
+              </Button>
+            </CardFooter>
           </CardBody>
         </Card>
       </div>

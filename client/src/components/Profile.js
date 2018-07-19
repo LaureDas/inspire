@@ -151,7 +151,7 @@ state= {collapse: false, albums [], mewAlbm: {title}}
             {this.state.favourites
               .filter(article => this.state.tagsSelected[article.categoryName])
               .map(newsCard => (
-                <Col xs="3" sm="4">
+                <Col col-sm-3>
                   <CardFav key={newsCard.id} value={newsCard} />
                 </Col>
               ))}
