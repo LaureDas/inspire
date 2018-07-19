@@ -28,7 +28,8 @@ class videoCard extends Component {
       cardUrl: this.props.value.url,
       cardDescription: this.props.value.description,
       tag: this.props.value.tag,
-      type: this.props.value.type
+      type: this.props.value.type,
+      id: this.props.value.id
     };
   }
 
@@ -56,7 +57,7 @@ class videoCard extends Component {
       "https://www.cbronline.com/wp-content/uploads/2016/06/what-is-URL.jpg";
     // console.log("tryout default", defaultImg);
     // console.log("card", this.cardVideo);
-    let url = this.cardVideo.cardUrl;
+    let id = this.cardVideo.id;
     return (
       <div>
         <Card className="card">
@@ -65,7 +66,7 @@ class videoCard extends Component {
             <Badge className="type">{this.cardVideo.type}</Badge>
           </CardHeader>
 
-          <Video value={url} />
+          <Video value={id} />
 
           <CardBody className="cardBody">
             <CardTitle className="body">{this.cardVideo.cardTitle}</CardTitle>

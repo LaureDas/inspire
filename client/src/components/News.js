@@ -83,6 +83,7 @@ class News extends Component {
                 videos: [
                   ...this.state.videos,
                   ...videos.map(video => ({
+                    id: video.id.videoId,
                     url:
                       "https://www.youtube.com/embed/" +
                       video.id.videoId +
@@ -134,12 +135,12 @@ class News extends Component {
 
     return (
       <div className="box">
-        <div className="jumboClass">
+        <div>
           <Jumbotron>
-            <h6 className="display-12">Welcome to your learning platform!</h6>
             <p className="lead">
               {this.state.categories.map(category => (
                 <Button
+                  className="btn-category"
                   outline={!this.state.tagsSelected[category.name]}
                   onClick={e => this.handleClick(e, category.name)}
                   key={category.name}
@@ -170,7 +171,7 @@ class News extends Component {
                   this.state.typeSelected[article.type]
               )
               .map(newsCard => (
-                <Col sm="3">
+                <Col col-sm-3>
                   <Card key={newsCard.id} value={newsCard} />
                 </Col>
               ))}
@@ -185,7 +186,7 @@ class News extends Component {
                   this.state.typeSelected[video.type]
               )
               .map(videoCard => (
-                <Col sm="3">
+                <Col col-sm-3>
                   <VideoCard key={videoCard.id} value={videoCard} />
                 </Col>
               ))}

@@ -32,7 +32,8 @@ const userSchema = new Schema({
         author: String,
         description: String,
         imgUrl: String,
-        url: String
+        url: String,
+        tag: String
       }
     }
   ]

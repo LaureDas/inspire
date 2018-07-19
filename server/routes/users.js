@@ -42,12 +42,12 @@ router.post(
     //console.log("body", req.body);
     let article = {
       categoryName: req.body.tag,
-
       data: {
         title: req.body.cardTitle,
         description: req.body.cardDescription,
         imgUrl: req.body.imgUrl,
-        url: req.body.cardUrl
+        url: req.body.cardUrl,
+        tag: req.body.tag
       }
     };
     User.findByIdAndUpdate(

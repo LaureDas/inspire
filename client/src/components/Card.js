@@ -74,18 +74,22 @@ class newsCard extends Component {
 
           {!this.isimgDefined() && (
             <CardImg
+              className="img-responsive"
+              className="img-rounded"
               className="cardImg"
               top
-              width="100%"
+              width="80%"
               src={defaultImg}
               alt="Card image cap"
             />
           )}
           {this.isimgDefined() && (
             <CardImg
+              className="img-responsive"
+              className="img-rounded"
               className="cardImg"
               top
-              width="100%"
+              width="80%"
               src={this.cardNews.imgUrl}
               alt="Card image cap"
             />
@@ -93,24 +97,27 @@ class newsCard extends Component {
 
           <CardBody className="cardBody">
             <CardTitle className="body">{this.cardNews.cardTitle}</CardTitle>
-            <hr />
 
-            <CardText>{this.cardNews.cardDescription}</CardText>
-
-            <Button
-              className="body"
-              onClick={() => this.openInNewTab(this.cardNews.cardUrl)}
-            >
-              Learn more
-            </Button>
-            <CardFooter>
-              <Button bsSize="large">
-                <FA
-                  name="star"
-                  onClick={e => this.handleClick(e, this.cardNews)}
-                />
+            <CardText className="body" display-4>
+              {this.cardNews.cardDescription}
+            </CardText>
+            <div className="flex">
+              <Button
+                className="btnLearn"
+                className="body"
+                onClick={() => this.openInNewTab(this.cardNews.cardUrl)}
+              >
+                Learn more
               </Button>
-            </CardFooter>
+              <CardFooter bsSize="small">
+                <Button bsSize="medium">
+                  <FA
+                    name="star"
+                    onClick={e => this.handleClick(e, this.cardNews)}
+                  />
+                </Button>
+              </CardFooter>
+            </div>
           </CardBody>
         </Card>
       </div>

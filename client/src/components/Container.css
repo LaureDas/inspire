@@ -1,4 +1,18 @@
 .box {
-  display: flex;
-  flex-direction: column;
+  padding: 0;
+}
+
+.jumbotron {
+  padding: 0px;
+  padding-top: 5px;
+}
+
+.btn-category {
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.container {
+  padding-right: 5px;
+  padding-left: 5px;
 }
