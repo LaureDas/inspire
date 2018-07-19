@@ -141,6 +141,7 @@ class News extends Component {
               {this.state.categories.map(category => (
                 <Button
                   className="btn-category"
+                  size="sm"
                   outline={!this.state.tagsSelected[category.name]}
                   onClick={e => this.handleClick(e, category.name)}
                   key={category.name}
@@ -152,6 +153,7 @@ class News extends Component {
             <hr className="my-2" />
             {this.state.type.map(type => (
               <Button
+              size="sm"
                 outline={!this.state.typeSelected[type]}
                 onClick={e => this.handleTypeClick(e, type)}
                 key={type}
@@ -163,7 +165,9 @@ class News extends Component {
         </div>
 
         <Container>
+       
           <Row>
+
             {this.state.news
               .filter(
                 article =>
@@ -171,13 +175,16 @@ class News extends Component {
                   this.state.typeSelected[article.type]
               )
               .map(newsCard => (
-                <Col col-sm-3>
-                  <Card key={newsCard.id} value={newsCard} />
-                </Col>
+
+                  <Col col-sm-3>
+                    <Card key={newsCard.id} value={newsCard} />
+                  </Col>
+                
               ))}
           </Row>
         </Container>
         <Container>
+          
           <Row>
             {this.state.videos
               .filter(

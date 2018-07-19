@@ -66,28 +66,30 @@ class videoCard extends Component {
             <Badge className="type">{this.cardVideo.type}</Badge>
           </CardHeader>
 
-          <Video value={id} />
+          <Video className="video" value={id} />
 
           <CardBody className="cardBody">
             <CardTitle className="body">{this.cardVideo.cardTitle}</CardTitle>
-            <hr />
 
-            <CardText>{this.cardVideo.cardDescription}</CardText>
-
-            <Button
-              className="body"
-              onClick={() => this.openInNewTab(this.cardVideo.cardUrl)}
-            >
-              Learn more
-            </Button>
-            <CardFooter>
-              <Button bsSize="large">
-                <FA
-                  name="star"
-                  onClick={e => this.handleClick(e, this.cardVideo)}
-                />
+            <CardText className="body" display-4>
+              {this.cardVideo.cardDescription}
+            </CardText>
+            <div className="flex body">
+              <Button
+                className="body"
+                onClick={() => this.openInNewTab(this.cardVideo.cardUrl)}
+              >
+                Learn more
               </Button>
-            </CardFooter>
+              <CardFooter>
+                <Button bsSize="large">
+                  <FA
+                    name="star"
+                    onClick={e => this.handleClick(e, this.cardVideo)}
+                  />
+                </Button>
+              </CardFooter>
+            </div>
           </CardBody>
         </Card>
       </div>

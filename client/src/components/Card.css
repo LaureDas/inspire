@@ -16,6 +16,12 @@
   padding: 0;
 }
 .cardImg {
+  height: 50%;
+}
+.video {
+  width: "80%";
+}
+.span {
   height: 40%;
 }
 .cardBody {
